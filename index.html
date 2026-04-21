@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMF Technology | Bridging Challenges with AI & Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-bg: #0A192F;
+            --accent-cyan: #00D4FF;
+            --accent-purple: #7C3AED;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: #F8F9FA;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #00D4FF, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(124, 58, 237, 0.05) 100%);
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 50px); }
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 72px);
+            background: var(--primary-bg);
+            z-index: 50;
+            padding: 2rem;
+        }
+
+        .whatsapp-float {
+  position: fixed;
+  bottom: 10px;
+  
+  left: 50%; /* Moves the start of the button to the center */
+  
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  /* This creates the creative "pulse" effect */
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #128c7e;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <nav class="fixed top-0 w-full z-50 glass border-t-0 border-x-0 rounded-none bg-opacity-80">
+        <div class="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-4">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-[#00D4FF] to-[#7C3AED] rounded-lg flex items-center justify-center">
+                    <span class="font-bold text-white">IMF</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight">Technology</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <a href="#cases" class="nav-link">Case Studies</a>
+                <a href="#ai" class="nav-link">Innovation</a>
+                <a href="#contact" class="nav-link">Company</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <!--<a href="#contact" class="hidden md:block px-5 py-2 rounded-full border border-gray-600 text-sm font-medium hover:border-cyan-400 transition-colors">
+                    Login
+                </a>-->
+                <a href="#contact" class="btn-primary px-5 py-2 rounded-full text-sm font-bold text-white">
+                    Get a Consultation
+                </a>
+                <button id="menu-toggle" class="md:hidden text-white">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-menu" class="md:hidden">
+        <div class="flex flex-col space-y-6 text-xl font-semibold">
+            <a href="#solutions" class="mobile-nav-item">Solutions</a>
+            <a href="#cases" class="mobile-nav-item">Case Studies</a>
+            <a href="#ai" class="mobile-nav-item">AI Innovation</a>
+            <a href="#contact" class="mobile-nav-item">Company</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-20 px-6 overflow-hidden">
+        <div class="hero-blob top-0 -left-20"></div>
+        <div class="hero-blob bottom-0 -right-20" style="animation-delay: -5s"></div>
+        
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass border-cyan-500/30 mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                <span class="text-xs font-semibold tracking-wider uppercase text-cyan-400">Next Gen AI Integration Now Live</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 leading-[1.1]">
+                Bridging Business <br/>
+                <span class="gradient-text">Challenges with AI</span>
+            </h1>
+            
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+                Scale your vision with custom software, intelligent data analytics, and digital transformation strategies built for the future of B2B.
+            </p>
+
+           <!-- <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button class="btn-primary px-8 py-4 rounded-xl text-lg font-bold w-full sm:w-auto">
+                    Start Your Transformation
+                </button>
+                <button class="glass px-8 py-4 rounded-xl text-lg font-bold w-full sm:w-auto hover:bg-white hover:text-navy-900 transition-all border-white/20">
+                    View Case Studies
+                </button>
+            </div>-->
+
+            <!-- Visual Element: Dashboard Mockup -->
+            <div class="mt-24 relative max-w-5xl mx-auto">
+                <div class="absolute inset-0 bg-cyan-500/20 blur-[120px] rounded-full"></div>
+                <div class="glass p-2 relative overflow-hidden border-white/10 shadow-2xl">
+                    <div class="bg-[#050B15] rounded-lg p-6 flex flex-col items-start space-y-8 overflow-hidden">
+                        <!-- Mockup Header -->
+                        <div class="flex items-center justify-between w-full border-b border-white/5 pb-4">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                            </div>
+                            <div class="text-xs text-gray-500 font-mono">IMF_ANALYTICS_DASHBOARD_v4.0</div>
+                        </div>
+                        <!-- Mockup Body -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                            <div class="col-span-2 space-y-6">
+                                <div class="h-48 bg-white/5 rounded-lg relative overflow-hidden flex items-end px-4 space-x-2">
+                                    <div class="w-full bg-cyan-500/40 h-1/2 rounded-t animate-pulse"></div>
+                                    <div class="w-full bg-cyan-500/60 h-3/4 rounded-t animate-pulse" style="animation-delay: 0.1s"></div>
+                                    <div class="w-full bg-cyan-500/40 h-2/3 rounded-t animate-pulse" style="animation-delay: 0.2s"></div>
+                                    <div class="w-full bg-purple-500/60 h-5/6 rounded-t animate-pulse" style="animation-delay: 0.3s"></div>
+                                    <div class="w-full bg-cyan-500/40 h-1/2 rounded-t animate-pulse" style="animation-delay: 0.4s"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-24 bg-white/5 rounded-lg p-4">
+                                        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Active Users</div>
+                                        <div class="text-2xl font-bold text-cyan-400">12,402</div>
+                                    </div>
+                                    <div class="h-24 bg-white/5 rounded-lg p-4">
+                                        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Efficiency Gain</div>
+                                        <div class="text-2xl font-bold text-purple-400">+34.2%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-white/5 p-4 rounded-lg space-y-3">
+                                    <div class="text-xs font-semibold text-gray-400">AI Task Queue</div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                        <div class="text-[10px] text-gray-500">Inventory Sync Complete</div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                                        <div class="text-[10px] text-gray-500">Predictive Modeling...</div>
+                                    </div>
+                                    <div class="flex items-center space-x-2 opacity-50">
+                                        <div class="w-2 h-2 rounded-full bg-gray-500"></div>
+                                        <div class="text-[10px] text-gray-500">Data Cleanup Scheduled</div>
+                                    </div>
+                                </div>
+                                <div class="h-32 border border-dashed border-white/10 rounded-lg flex items-center justify-center">
+                                    <i data-lucide="plus" class="text-white/20"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By -->
+    <section class="py-20 border-y border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-gray-500 text-sm font-semibold tracking-widest uppercase mb-12">Empowering Digital Leaders Worldwide</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale">
+                <span class="text-2xl font-black italic">FASHION_HU</span>
+                <span class="text-2xl font-black italic">LOGI-CORP</span>
+                <span class="text-2xl font-black italic">FIN-EDGE</span>
+                <span class="text-2xl font-black italic">GLOBAL_TECH</span>
+                <span class="text-2xl font-black italic">PRIME_AI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Grid -->
+    <section id="solutions" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Expert Solutions for a <span class="gradient-text">Complex Digital World</span></h2>
+                    <p class="text-gray-400 text-lg">We combine deep technical expertise with strategic business intelligence to build systems that don't just work—they excel.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <div class="glass p-4 text-center min-w-[120px]">
+                        <div class="text-2xl font-bold text-cyan-400">30+</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-wider">Projects</div>
+                    </div>
+                    <div class="glass p-4 text-center min-w-[120px]">
+                        <div class="text-2xl font-bold text-purple-400">99%</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-wider">Uptime</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card glass p-8 border-white/10">
+                    <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 text-cyan-400">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Web & Mobile Development</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        High-performance, scalable applications built with React, Node.js, and Swift. We focus on seamless UX and robust backend architectures.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Enterprise Web Platforms</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Native iOS & Android Apps</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Cloud Infrastructure Migration</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card glass p-8 border-white/10 border-cyan-500/20 glow-cyan">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+                        <i data-lucide="brain-circuit"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI & Machine Learning</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Integrating Large Language Models and custom predictive algorithms into your existing workflows to automate decision-making.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400"></i>
+                            <span>Custom LLM Implementation</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400"></i>
+                            <span>Predictive Sales Analytics</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400"></i>
+                            <span>Automated Content Workflows</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card glass p-8 border-white/10">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 text-green-400">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Business Intelligence</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Transforming raw data into actionable insights with real-time dashboards and comprehensive reporting structures.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+                            <span>Real-time Data Visualization</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+                            <span>Supply Chain Optimization</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+                            <span>Customer Behavior Tracking</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Feature Detail -->
+    <section id="ai" class="py-24 px-6 bg-[#00D4FF]/5">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 italic">Dual-Engine Innovation. <br/><span class="text-white">Synergistic Development.</span></h2>
+                <div class="space-y-8">
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-xs italic">01</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Proprietary Product Ecosystems</h4>
+                            <p class="text-gray-400">We develop scalable, high-performance SaaS solutions that set new standards in AI-driven automation.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-xs italic">02</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Bespoke Strategic Partnerships</h4>
+                            <p class="text-gray-400">We deploy our internal engineering excellence to solve your unique business challenges, delivering custom digital transformation.</p>
+                        </div>
+                    </div>
+                </div>
+                <button  class="mt-12 btn-primary px-8 py-3 rounded-xl font-bold"><a href="#contact" class="nav-link">Request AI Audit</a></button>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-500 blur-2xl opacity-20"></div>
+                <div class="relative glass aspect-square overflow-hidden rounded-3xl p-8 flex items-center justify-center border-white/5">
+                    <!-- Geometric AI Visual -->
+                    <div class="relative w-64 h-64">
+                        <div class="absolute inset-0 border-2 border-cyan-400/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                        <div class="absolute inset-4 border-2 border-purple-400/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="cpu" class="w-20 h-20 text-cyan-400 animate-pulse"></i>
+                        </div>
+                        <!-- Floating Nodes -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_15px_white]"></div>
+                        <div class="absolute bottom-10 right-0 w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_15px_#00D4FF]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Preview -->
+    <section id="cases" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Proven Results</h2>
+                <p class="text-gray-400">Explore how we help global industries evolve.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="group relative overflow-hidden rounded-3xl aspect-[16/10] glass">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-cyan-900/40 group-hover:bg-cyan-900/20 transition-all duration-500"><img src="logo.png" alt="QuranGo Project" class="absolute inset-0 w-full h-full object-cover"></div>
+                    <div class="absolute bottom-8 left-8 z-20">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 block">Mobile Tech</span>
+                        <h4 class="text-3xl font-bold mb-4">QuranGo</h4>
+                        <p class="text-gray-300 max-w-sm">Optimized a digital Quran platform to deliver a fast, accessible, and user-friendly experience for daily users.</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl aspect-[16/10] glass">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-purple-900/40 group-hover:bg-purple-900/20 transition-all duration-500"><img src="Gemini.png" alt="QuranGo Project" class="absolute inset-0 w-full h-full object-cover"></div>
+                    <div class="absolute bottom-8 left-8 z-20">
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-2 block">Transportation</span>
+                        <h4 class="text-3xl font-bold mb-4">Urbanway</h4>
+                        <p class="text-gray-300 max-w-sm">Developed a comprehensive transportation management solution that optimized route efficiency</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-24 px-6 bg-[#00D4FF]/5 border-t border-white/5">
+        <div class="max-w-4xl mx-auto glass p-10 border-white/10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4 italic">Get in Touch</h2>
+                <p class="text-gray-400 italic">Tell us about your biggest business challenge.</p>
+            </div>
+            
+            <!--<form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-gray-500">Full Name</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="John Doe">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-gray-500">Business Email</label>
+                        <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="john@company.com">
+                    </div>
+                </div>
+                
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-gray-500">Biggest Challenge</label>
+                    <select class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors appearance-none">
+                        <option class="bg-navy-900">Scalable AI Integration</option>
+                        <option class="bg-navy-900">Digital Product Development</option>
+                        <option class="bg-navy-900">Cloud Infrastructure</option>
+                        <option class="bg-navy-900">Data Analytics</option>
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs font-bold uppercase tracking-widest text-gray-500">Project Goals</label>
+                    <textarea class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors h-32" placeholder="Tell us what you want to achieve..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg">Send Message</button>
+            </form>-->
+            <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="whatsapp-float">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.766 1.057 3.965L.064 16l4.23-1.109a7.87 7.87 0 0 0 3.7.944h.004c4.367 0 7.926-3.558 7.93-7.927a7.7 7.7 0 0 0-2.393-5.682zm-5.607 11.104h-.003a6.52 6.52 0 0 1-3.327-.912l-.239-.142-2.476.649.66-2.411-.154-.253a6.6 6.6 0 0 1-1.02-3.578c0-3.666 2.983-6.65 6.65-6.65a6.63 6.63 0 0 1 4.706 1.954 6.63 6.63 0 0 1 1.954 4.706c0 3.666-2.983 6.65-6.65 6.65z"/>
+    <path d="M11.536 9.61c-.206-.103-1.213-.598-1.402-.666-.188-.069-.326-.103-.464.103-.138.206-.533.666-.653.804-.118.138-.237.155-.443.051-.206-.103-1.111-.41-2.115-1.306-.782-.698-1.31-1.562-1.464-1.768-.154-.206-.017-.318.09-.421.096-.09.206-.237.31-.355.103-.118.138-.206.206-.344.069-.138.035-.258-.017-.361-.051-.103-.464-1.119-.636-1.53-.167-.406-.339-.35-.464-.356-.12-.007-.257-.007-.393-.007-.136 0-.356.052-.542.259-.186.206-.711.695-.711 1.696 0 1.001.711 1.968.81 2.105.103.138 1.402 2.14 3.398 3.003.475.205.845.328 1.134.42.477.153.91.13 1.252.078.384-.058 1.213-.497 1.383-.977.17-.48.17-.893.118-.977-.052-.083-.188-.138-.393-.241z"/>
+  </svg>
+</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center space-x-2">
+                <div class="w-6 h-6 bg-gradient-to-br from-[#00D4FF] to-[#7C3AED] rounded flex items-center justify-center">
+                    <span class="font-bold text-[10px] text-white">IMF</span>
+                </div>
+                <span class="text-lg font-bold tracking-tight">Technology</span>
+            </div>
+            
+            <div class="flex space-x-8 text-xs text-gray-500 uppercase tracking-widest">
+                <a href="https://www.linkedin.com/company/imftechnology" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://web.facebook.com/imftech" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Facebook</a>
+                <a href="https://www.instagram.com/imf.technology/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram</a>
+                
+            </div>
+
+            <p class="text-gray-500 text-xs">© 2026 IMF Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.style.display = isMenuOpen ? 'block' : 'none';
+            menuToggle.innerHTML = isMenuOpen ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+            lucide.createIcons();
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.style.display = 'none';
+                menuToggle.innerHTML = '<i data-lucide="menu"></i>';
+                lucide.createIcons();
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add glass shadow on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-2xl');
+                nav.classList.add('border-b');
+                nav.classList.add('bg-navy-950');
+            } else {
+                nav.classList.remove('shadow-2xl');
+                nav.classList.remove('border-b');
+                nav.classList.remove('bg-navy-950');
+            }
+        });
+    </script>
+</body>
+</html>
