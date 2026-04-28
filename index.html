@@ -101,11 +101,11 @@
             padding: 2rem;
         }
 
-        .whatsapp-float {
+       /* .whatsapp-float {
   position: fixed;
   bottom: 10px;
   
-  left: 50%; /* Moves the start of the button to the center */
+  left: 50%; 
   
   background-color: #25d366;
   color: white;
@@ -118,8 +118,39 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transition: all 0.3s ease;
-  /* This creates the creative "pulse" effect */
+  
   animation: pulse 2s infinite;
+}*/
+
+/* 1. The Container (Keeps them in one line) */
+.contact-buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+/* 2. Shared Styles (Applied to BOTH buttons) */
+.whatsapp-float, .email-float {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 3. WhatsApp Specifics */
+.whatsapp-float {
+  background-color: #25d366;
+  color: white;
+  animation: pulse-whatsapp 2s infinite;
 }
 
 .whatsapp-float:hover {
@@ -128,11 +159,32 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes pulse {
+/* 4. Email Specifics */
+.email-float {
+  background-color: #007bff;
+  color: white;
+  animation: pulse-email 2s infinite;
+}
+
+.email-float:hover {
+  transform: scale(1.1);
+  background-color: #0056b3;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* 5. Animations (Kept separate for different colors) */
+@keyframes pulse-whatsapp {
   0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
   70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
   100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
+
+@keyframes pulse-email {
+  0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
     </style>
 </head>
 <body>
@@ -162,7 +214,21 @@
                     Login
                 </a>-->
                 <a href="#contact" class="btn-primary px-3 py-1 rounded-full text-sm font-bold text-white">
-                    Get a Consultation
+                   <!-- Get a Consultation-->
+                    <svg 
+  xmlns="http://www.w3.org/2000/svg" 
+  width="24" 
+  height="24" 
+  viewBox="0 0 24 24" 
+  fill="none" 
+  stroke="currentColor" 
+  stroke-width="2" 
+  stroke-linecap="round" 
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+</svg>
                 </a>
                 <button id="menu-toggle" class="md:hidden text-white">
                     <i data-lucide="menu"></i>
@@ -437,32 +503,50 @@
                 <h2 class="text-4xl font-bold mb-4">Proven Results</h2>
                 <p class="text-gray-400">Explore how we help global industries evolve.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group relative overflow-hidden rounded-3xl aspect-[16/10] glass">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
-                    <div class="absolute inset-0 bg-cyan-900/40 group-hover:bg-cyan-900/20 transition-all duration-500"><img src="logo.png" alt="QuranGo Project" class="absolute inset-0 w-full h-full object-cover"></div>
-                    <div class="absolute bottom-8 left-8 z-20">
-                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 block">Mobile Tech</span>
-                        <h4 class="text-3xl font-bold mb-4">QuranGo</h4>
-                        <p class="text-gray-300 max-w-sm">Optimized a digital Quran platform to deliver a fast, accessible, and user-friendly experience for daily users.</p>
-                    </div>
+       
+       
+       
+            <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="group relative overflow-hidden rounded-3xl aspect-[16/10] glass">
+                <div class="absolute inset-0 bg-cyan-900/40 group-hover:bg-cyan-900/20 transition-all duration-500">
+                    <img src="logo.png" alt="QuranGo Project" class="absolute inset-0 w-full h-full object-cover">
                 </div>
-                <div class="group relative overflow-hidden rounded-3xl aspect-[16/10] glass">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
-                    <div class="absolute inset-0 bg-purple-900/40 group-hover:bg-purple-900/20 transition-all duration-500"><img src="Gemini.png" alt="QuranGo Project" class="absolute inset-0 w-full h-full object-cover"></div>
-                    <div class="absolute bottom-8 left-8 z-20">
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-2 block">Transportation</span>
-                        <h4 class="text-3xl font-bold mb-4">Urbanway</h4>
-                        <p class="text-gray-300 max-w-sm">Developed a comprehensive transportation management solution that optimized route efficiency</p>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                <div class="absolute inset-0 p-6 z-20 flex flex-col justify-end">
+                    <span class="text-[10px] md:text-xs font-bold text-cyan-400 uppercase tracking-widest mb-1 md:mb-2 block">Mobile Tech</span>
+                    <h4 class="text-xl md:text-3xl font-bold mb-2 md:mb-4">QuranGo</h4>
+                    <p class="text-xs md:text-sm text-gray-300 max-w-sm mb-4 line-clamp-2 md:line-clamp-none">Optimized a digital Quran platform to deliver a fast, accessible, and user-friendly experience.</p>
+                    <div>
+                        <a href="https://play.google.com/store/apps/details?id=com.saim1234.QuranApp" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold hover:bg-white/20 transition-all duration-300 text-xs md:text-base">
+                            Visit the App
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <div class="group relative overflow-hidden rounded-3xl aspect-[16/10] glass">
+                <div class="absolute inset-0 bg-purple-900/40 group-hover:bg-purple-900/20 transition-all duration-500">
+                    <img src="Gemini.png" alt="Urbanway Project" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                <div class="absolute inset-0 p-6 z-20 flex flex-col justify-end">
+                    <span class="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest mb-1 md:mb-2 block">Transportation</span>
+                    <h4 class="text-xl md:text-3xl font-bold mb-2 md:mb-4 text-white">Urbanway</h4>
+                    <p class="text-xs md:text-sm text-gray-300 max-w-sm line-clamp-2 md:line-clamp-none">Developed a comprehensive transportation management solution that optimized route efficiency.</p>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Contact Form -->
     <section id="contact" class="py-24 px-6 bg-[#00D4FF]/5 border-t border-white/5">
-        <div class="max-w-4xl mx-auto glass p-10 border-white/10">
+        <div class="max-w-4xl mx-auto glass p-10 border-white/10 text-center " >
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4 italic">Get in Touch</h2>
                 <p class="text-gray-400 italic">Tell us about your biggest business challenge.</p>
@@ -497,12 +581,21 @@
 
                 <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg">Send Message</button>
             </form>-->
-       <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="whatsapp-float">
+    
+    <div class="contact-buttons-wrapper">
+    
+            <a href="https://wa.me/971559514584" target="_blank" class="whatsapp-float" > 
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
     <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.766 1.057 3.965L.064 16l4.23-1.109a7.87 7.87 0 0 0 3.7.944h.004c4.367 0 7.926-3.558 7.93-7.927a7.7 7.7 0 0 0-2.393-5.682zm-5.607 11.104h-.003a6.52 6.52 0 0 1-3.327-.912l-.239-.142-2.476.649.66-2.411-.154-.253a6.6 6.6 0 0 1-1.02-3.578c0-3.666 2.983-6.65 6.65-6.65a6.63 6.63 0 0 1 4.706 1.954 6.63 6.63 0 0 1 1.954 4.706c0 3.666-2.983 6.65-6.65 6.65z"/>
     <path d="M11.536 9.61c-.206-.103-1.213-.598-1.402-.666-.188-.069-.326-.103-.464.103-.138.206-.533.666-.653.804-.118.138-.237.155-.443.051-.206-.103-1.111-.41-2.115-1.306-.782-.698-1.31-1.562-1.464-1.768-.154-.206-.017-.318.09-.421.096-.09.206-.237.31-.355.103-.118.138-.206.206-.344.069-.138.035-.258-.017-.361-.051-.103-.464-1.119-.636-1.53-.167-.406-.339-.35-.464-.356-.12-.007-.257-.007-.393-.007-.136 0-.356.052-.542.259-.186.206-.711.695-.711 1.696 0 1.001.711 1.968.81 2.105.103.138 1.402 2.14 3.398 3.003.475.205.845.328 1.134.42.477.153.91.13 1.252.078.384-.058 1.213-.497 1.383-.977.17-.48.17-.893.118-.977-.052-.083-.188-.138-.393-.241z"/>
   </svg>
 </a>
+<a href="mailto:info@imftechnology.com?subject=Contact%20from%20Website" class="email-float" target="_blank" >
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.117v-5.734zm-.034 6.878L9.271 8.82 8 9.583 6.729 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.117l4.758-2.855L1 5.383v5.734z"/>
+    </svg>
+  </a>
+</div>
         </div>
     </section>
 
